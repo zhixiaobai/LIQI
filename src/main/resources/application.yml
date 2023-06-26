@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: 123456
+    username: root
+    url: jdbc:mysql://localhost:3306/jntz?rewriteBatchedStatements=true
+
+
+
+ds:
+  enable: false
+  pool:
+    type: druid
+  cache:
+    type:
+      lru:
+        capacity: 100 # lru容量
+      ttl:
+        ttlTime: 3000 # ttl刷新时间
+        expireTime: 30000 # 过期时间

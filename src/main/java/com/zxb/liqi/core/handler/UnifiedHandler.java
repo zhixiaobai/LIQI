@@ -1,9 +1,6 @@
 package com.zxb.liqi.core.handler;
 
-import com.zxb.liqi.core.executor.DeleteExecutor;
-import com.zxb.liqi.core.executor.InsertExecutor;
-import com.zxb.liqi.core.executor.SelectExecutor;
-import com.zxb.liqi.core.executor.UpdateExecutor;
+import com.zxb.liqi.core.executor.*;
 import com.zxb.liqi.enums.SqlOperationType;
 import com.zxb.liqi.interfaces.BaseHandler;
 import com.zxb.liqi.interfaces.BaseParser;
@@ -24,11 +21,13 @@ public class UnifiedHandler {
         if (operationType.getTypeClass() == SelectExecutor.class) {
             return new SelectHandler(parser);
         } else if (operationType.getTypeClass() == InsertExecutor.class) {
-            return new InsertHandler(parser);
+            return new DMLHandler(parser);
         } else if (operationType.getTypeClass() == UpdateExecutor.class) {
-            return new SelectHandler(parser);
+            return new DMLHandler(parser);
         } else if (operationType.getTypeClass() == DeleteExecutor.class) {
-            return new SelectHandler(parser);
+            return new DMLHandler(parser);
+        } else if (operationType.getTypeClass() == DMLExecutor.class) {
+            return new DMLHandler(parser);
         } else {
             throw new RuntimeException("");
         }

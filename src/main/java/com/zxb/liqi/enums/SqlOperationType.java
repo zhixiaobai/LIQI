@@ -1,9 +1,6 @@
 package com.zxb.liqi.enums;
 
-import com.zxb.liqi.core.executor.DeleteExecutor;
-import com.zxb.liqi.core.executor.InsertExecutor;
-import com.zxb.liqi.core.executor.SelectExecutor;
-import com.zxb.liqi.core.executor.UpdateExecutor;
+import com.zxb.liqi.core.executor.*;
 
 /**
  * @author Mr.M
@@ -15,9 +12,9 @@ public enum SqlOperationType {
      *
      */
     SELECT("Select", "SELECT %s FROM %s WHERE %s;", SelectExecutor.class),
-    INSERT("Insert", "INSERT INTO %s (%s) VALUES (%s);", InsertExecutor.class),
-    UPDATE("Update", "UPDATE %s SET %s WHERE %s", UpdateExecutor.class),
-    DELETE("Delete", "DELETE FROM %s WHERE %s;", DeleteExecutor.class),
+    INSERT("Insert", "INSERT INTO %s (%s) VALUES (%s);", DMLExecutor.class),
+    UPDATE("Update", "UPDATE %s SET %s WHERE %s", DMLExecutor.class),
+    DELETE("Delete", "DELETE FROM %s WHERE %s;", DMLExecutor.class),
     ;
 
     private final String operationType;
